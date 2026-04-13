@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Queen 🌸</title>
+    <style>
+        :root {
+            --bg-color: #fff0f6; /* Soft Pink Background */
+            --primary-pink: #ff85a2;
+            --dark-pink: #ff477e;
+            --accent: #f72585;
+            --text-color: #4a4a4a;
+        }
+
+        body, html {
+            margin: 0; padding: 0;
+            width: 100%; height: 100%;
+            background-color: var(--bg-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex; justify-content: center; align-items: center;
+            overflow: hidden; color: var(--text-color);
+        }
+
+        /* Floating Photos & Hearts */
+        .photo-layer {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 1; display: none;
+        }
+
+        .floating-item {
+            position: absolute; border: 4px solid white;
+            border-radius: 15px; box-shadow: 0 8px 20px rgba(255, 133, 162, 0.3);
+            animation: floatUp 12s linear infinite; opacity: 0.8;
+            width: 130px; height: 160px; object-fit: cover;
+        }
+
+        .heart {
+            position: absolute; color: var(--primary-pink);
+            font-size: 2rem; animation: floatUp 8s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-20vh) rotate(20deg); opacity: 0; }
+        }
+
+        /* Gift Box */
+        .box-container { cursor: pointer; text-align: center; z-index: 10; }
+        .gift-box {
+            width: 130px; height: 130px; background: var(--primary-pink);
+            position: relative; margin: 0 auto; border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(255, 71, 126, 0.4);
+        }
+        .gift-box::before { content: ''; position: absolute; width: 20px; height: 100%; background: #ffffff; left: 50%; transform: translateX(-50%); }
+        .gift-box::after { content: ''; position: absolute; width: 100%; height: 20px; background: #ffffff; top: 50%; transform: translateY(-50%); }
+
+        /* Main Content */
+        #mainContent {
+            display: none; text-align: center; z-index: 5;
+            max-width: 85%; animation: fadeIn 2.5s ease;
+        }
+
+        h1 { color: var(--dark-pink); font-size: 2.2rem; margin-top: 0; }
+        
+        .poem {
+            font-size: 1.1rem; line-height: 1.8; color: #5d5d5d;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 20px; border-radius: 20px;
+            margin: 20px 0; border: 1px solid white;
+        }
+
+        /* Music Section */
+        .music-player {
+            background: white; padding: 10px 20px;
+            border-radius: 50px; display: inline-flex;
+            align-items: center; gap: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-top: 20px;
+        }
+        .music-icon { font-size: 1.5rem; animation: pulse 1.5s infinite; }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+
+    <audio id="bgMusic" loop>
+        <source src="Akash_Khadka_X_Samir_Shrestha_-_Timi_Bhayera_Prod._Kila_Music_Official_Music.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="box-container" id="giftSection" onclick="revealAll()">
+        <div class="gift-box"></div>
+        <p style="margin-top: 20px; font-weight: bold; color: var(--dark-pink);">मेरो सानो उपहार, तिम्रो लागि ❤️</p>
+    </div>
+
+    <div class="photo-layer" id="photoLayer">
+        <img src="IMG_20240803_063546_217.jpg" class="floating-item" style="left: 5%; animation-delay: 0s;">
+        <img src="IMG-20240904-WA0007.jpg" class="floating-item" style="left: 40%; animation-delay: 4s;">
+        <img src="20240923_144726_7236352439835436179.jpg" class="floating-item" style="left: 75%; animation-delay: 2s;">
+        <div class="heart" style="left: 20%; animation-delay: 1s;">❤️</div>
+        <div class="heart" style="left: 60%; animation-delay: 5s;">🌸</div>
+        <div class="heart" style="left: 85%; animation-delay: 3s;">💕</div>
+    </div>
+
+    <div id="mainContent">
+        <h1>नयाँ वर्ष 2083 को शुभकामना सानु! ✨</h1>
+        
+        <div class="poem">
+            May your smile always make my world colorful,<br>
+            may our love become even darker this New Year.<br>
+            You are my happiness, you are my world,<br>
+            so many new years of love and gifts!<br>
+            I love you mero gudiya ummmmmmmmmmmmma😘💕
+            
+        </div>
+
+        <div class="music-player">
+            <span class="music-icon">🎵</span>
+            <span style="font-size: 0.9rem; color: #888;">Now Playing: Romantic Melodies...</span>
+        </div>
+        
+        <p style="margin-top: 25px; font-weight: bold; color: var(--accent);">I Love You Forever mero Angle ❤️</p>
+    </div>
+
+    <script>
+        function revealAll() {
+            // Audio trigger
+            const music = document.getElementById('bgMusic');
+            music.volume = 0.6;
+            music.play();
+
+            // Screen updates
+            document.getElementById('giftSection').classList.add('hidden');
+            document.getElementById('photoLayer').style.display = 'block';
+            document.getElementById('mainContent').style.display = 'block';
+
+            // Background sparkle effect
+            setInterval(createSparkle, 300);
+        }
+
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.innerHTML = "✨";
+            sparkle.style.position = "absolute";
+            sparkle.style.left = Math.random() * 100 + "vw";
+            sparkle.style.top = Math.random() * 100 + "vh";
+            sparkle.style.fontSize = "15px";
+            sparkle.style.color = "#ff85a2";
+            sparkle.style.pointerEvents = "none";
+            sparkle.style.animation = "fadeIn 1s forwards";
+            document.body.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 1000);
+        }
+    </script>
+</body>
+</html>
